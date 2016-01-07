@@ -6,11 +6,13 @@
         firstName: ko.observable(""),
         lastName: ko.observable(""),
         enrollmentDate: ko.observable(""),
+        mode: ko.observable(""),
         reset: function () {
             this.id(0);
             this.firstName("");
             this.lastName("");
             this.enrollmentDate("");
+            this.mode("");
         }
     }
 }
@@ -33,24 +35,28 @@ function getAllItems() {
     });
 }
 
-function deleteItem() {
-
-}
-
-function handleEditAndCreate() {
-    if ($(this).val() === 'Create') {
-
+function handleEditAndCreate(data) {
+    if (data) {
+        viewModel.editor.id(data.StudentID);
+        viewModel.editor.firstName(data.FirstName);
+        viewModel.editor.lastName(data.LastName);
+        viewModel.editor.enrollmentDate(moment(data.EnrollmentDate).format('L'));
+        viewModel.editor.mode("Edit Student Information");
     }
-    else if ($(this).val() === 'Edit') {
-        var item = ko.dataFor(this);
-        viewModel.editor.id(item.StudentID);
-        viewModel.editor.firstName(item.FirstName);
-        viewModel.editor.lastName(item.LastName);
-        viewModel.editor.enrollmentDate(moment(item.EnrollmentDate).format('L'));
+    else {
+        viewModel.editor.mode("Create a Student");
     }
 
     viewModel.displayIndex(false);
     return;
+}
+
+function deleteItem(data) {
+    if (data && data.StudentID > 0) {
+        ajaxCall(data.StudentID, "DELETE", null, function () {
+            getAllItems();
+        });
+    }
 }
 
 function saveItem() {
@@ -71,8 +77,4 @@ function saveItem() {
 $(function () {
     getAllItems();
     ko.applyBindings(viewModel);
-
-    $('.createBtn').on('click', handleEditAndCreate);
-    $('table').on('click', 'input:button(.editBtn)', handleEditAndCreate);
-    //$('.saveBtn').on('click', saveItem);
 });
