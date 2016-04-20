@@ -1,0 +1,29 @@
+<h3>{{testMsg}}</h3>
+<form ng-submit="createStudent()">
+    <div class="form-group">
+        <label class="col-sm-2">First Name</label>
+        <input type="text" required ng-model="firstName" />
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2">Last Name</label>
+        <input type="text" required ng-model="lastName" />
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2">Enrollment Date</label>
+        <input type="text" required ng-model="enrollDateDisplay" placeholder="MM/DD/YYYY" />
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2">Course Enrollments</label>
+        <ul class="list-unstyled col-sm-offset-2">
+            <li ng-repeat="course in courses | orderBy:'Title'">
+                <input type="checkbox" ng-click="updateSelection(course.CourseID)" /> {{course.Title}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+        <a href="main">
+            <button>Cancel</button>
+        </a>
+    </div>
+</form>

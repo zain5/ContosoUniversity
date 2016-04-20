@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="studentApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,7 @@
     @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("ngScripts", false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,8 +21,9 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Students", "Index", "Student")</li>
-                    <li>@Html.ActionLink("Students SPA", "IndexSPA", "Student")</li>
+                    @*<li>@Html.ActionLink("Students", "Index", "Student")</li>
+                    <li>@Html.ActionLink("Students SPA", "IndexSPA", "Student")</li>*@
+                    <li>@Html.ActionLink("Students SPA", "IndexNgSPA", "Student")</li>
                 </ul>
             </div>
         </div>

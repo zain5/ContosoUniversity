@@ -31,8 +31,8 @@ namespace ContosoUniversity.Controllers
         }
 
         // GET: api/StudentWeb/5
-        [ResponseType(typeof(Student))]
-        public IHttpActionResult GetStudent(int id)
+        //[ResponseType(typeof(Student))]
+        public dynamic GetStudent(int id)
         {
             Student student = db.Students.Find(id);
             if (student == null)
@@ -40,7 +40,14 @@ namespace ContosoUniversity.Controllers
                 return NotFound();
             }
 
-            return Ok(student);
+            return new
+            {
+                student.StudentID,
+                student.FirstName,
+                student.LastName,
+                student.EnrollmentDate,
+                Courses = student.Enrollments.Select(T => new { T.Course.CourseID, T.Course.Title })
+            };
         }
 
         // PUT: api/StudentWeb/5

@@ -29,6 +29,12 @@ namespace ContosoUniversity.Controllers
             return View();
         }
 
+        public ActionResult IndexNgSPA()
+        {
+            //var students = db.Students.Include(T => T.Enrollments.Select(U => U.Course)).ToList();
+            return View();
+        }
+
         // GET: Students/Create
         public ActionResult Create()
         {

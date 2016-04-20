@@ -140,6 +140,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CourseWebController.cs" />
+    <Compile Include="Controllers\EnrollmentWebController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentWebController.cs" />
@@ -181,6 +183,15 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\StudentNgSpa\App.js" />
+    <Content Include="Scripts\StudentNgSpa\create.html" />
+    <Content Include="Scripts\StudentNgSpa\CreateController.js" />
+    <Content Include="Scripts\StudentNgSpa\edit.html" />
+    <Content Include="Scripts\StudentNgSpa\EditController.js" />
+    <Content Include="Scripts\StudentNgSpa\index.html" />
+    <Content Include="Scripts\StudentNgSpa\main.html" />
+    <Content Include="Scripts\StudentNgSpa\MainController.js" />
+    <Content Include="Scripts\StudentNgSpa\RootController.js" />
     <Content Include="Scripts\studentSPA.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -206,6 +217,7 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\IndexSPA.cshtml" />
+    <Content Include="Views\Student\IndexNgSPA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
