@@ -16,7 +16,7 @@
         <label class="col-sm-2">Course Enrollments</label>
         <ul class="list-unstyled col-sm-offset-2">
             <li ng-repeat="course in courses | orderBy:'Title'">
-                <input type="checkbox" ng-checked="isCourseInSelection(course.CourseID)" /> {{course.Title}}
+                <input type="checkbox" ng-checked="isCourseInSelection(course.CourseID)" ng-click="updateSelection(course.CourseID)" /> {{course.Title}}
             </li>
         </ul>
     </div>

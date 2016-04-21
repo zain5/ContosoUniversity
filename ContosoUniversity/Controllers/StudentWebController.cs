@@ -46,7 +46,7 @@ namespace ContosoUniversity.Controllers
                 student.FirstName,
                 student.LastName,
                 student.EnrollmentDate,
-                Courses = student.Enrollments.Select(T => new { T.Course.CourseID, T.Course.Title })
+                Courses = student.Enrollments.Select(T => new { T.EnrollmentID, T.Course.CourseID, T.Course.Title })
             };
         }
 
