@@ -1,0 +1,21 @@
+<p>
+    {{error}}
+</p>
+<table class="table" ng-show="courses">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Credits</th>
+            <th>Instructor</th>
+            <th>Enrollment Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="course in courses">
+            <td>{{course.Title}}</td>
+            <td>{{course.Credits}}</td>
+            <td>{{course.Instructor.FirstName}} {{course.Instructor.LastName}}</td>
+            <td>{{course.EnrollmentCount}}</td>
+        </tr>
+    </tbody>
+</table>

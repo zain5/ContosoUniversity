@@ -26,5 +26,17 @@ namespace ContosoUniversity.Controllers
 
             return View();
         }
+
+        public ActionResult Student()
+        {
+            ViewBag.NgAppModule = "studentApp";
+            return View();
+        }
+
+        public ActionResult Course()
+        {
+            ViewBag.NgAppModule = "courseApp";
+            return View();
+        }
     }
 }

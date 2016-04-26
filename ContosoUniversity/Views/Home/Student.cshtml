@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Student SPA";
+}
+
+@section ngScripts {
+    <base href="/Home/Student/" />
+    <script src="https://code.angularjs.org/1.5.3/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.3/angular-route.js"></script>
+    <script src="~/Scripts/Spas/StudentSpa/App.js"></script>
+    <script src="~/Scripts/Spas/StudentSpa/RootController.js"></script>
+    <script src="~/Scripts/Spas/StudentSpa/MainController.js"></script>
+    <script src="~/Scripts/Spas/StudentSpa/CreateController.js"></script>
+    <script src="~/Scripts/Spas/StudentSpa/EditController.js"></script>
+    <script src="~/Scripts/Spas/universityService.js"></script>
+}
+
+<div ng-controller="RootController">
+    <div ng-view></div>
+</div>

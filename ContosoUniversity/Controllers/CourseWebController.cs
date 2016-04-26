@@ -19,13 +19,21 @@ namespace ContosoUniversity.Controllers
         // GET: api/CoursesWeb
         public dynamic GetCourses()
         {
-            return from course in db.Courses.Include(T => T.Instructor)
+            return from course in db.Courses.Include(T => T.Instructor).Include(T => T.Enrollments.Select(U => U.EnrollmentID))
                    select new
                    {
                        course.CourseID,
                        course.Title,
-                       course.Instructor.FirstName,
-                       course.Instructor.LastName
+                       course.Credits,
+                       Instructor = new {
+                           ID = course.InstructorID,
+                           FirstName = course.Instructor.FirstName,
+                           LastName = course.Instructor.LastName
+                       },
+                       //course.InstructorID,
+                       //course.Instructor.FirstName,
+                       //course.Instructor.LastName,
+                       EnrollmentCount = course.Enrollments.Count
                    };
         }
 

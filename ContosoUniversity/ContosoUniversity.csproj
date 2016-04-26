@@ -183,15 +183,19 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\StudentNgSpa\App.js" />
-    <Content Include="Scripts\StudentNgSpa\create.html" />
-    <Content Include="Scripts\StudentNgSpa\CreateController.js" />
-    <Content Include="Scripts\StudentNgSpa\edit.html" />
-    <Content Include="Scripts\StudentNgSpa\EditController.js" />
-    <Content Include="Scripts\StudentNgSpa\index.html" />
-    <Content Include="Scripts\StudentNgSpa\main.html" />
-    <Content Include="Scripts\StudentNgSpa\MainController.js" />
-    <Content Include="Scripts\StudentNgSpa\RootController.js" />
+    <Content Include="Scripts\Spas\CourseSpa\App.js" />
+    <Content Include="Scripts\Spas\CourseSpa\main.html" />
+    <Content Include="Scripts\Spas\CourseSpa\MainController.js" />
+    <Content Include="Scripts\Spas\StudentSpa\App.js" />
+    <Content Include="Scripts\Spas\StudentSpa\create.html" />
+    <Content Include="Scripts\Spas\StudentSpa\CreateController.js" />
+    <Content Include="Scripts\Spas\StudentSpa\edit.html" />
+    <Content Include="Scripts\Spas\StudentSpa\EditController.js" />
+    <Content Include="Scripts\Spas\StudentSpa\index.html" />
+    <Content Include="Scripts\Spas\StudentSpa\main.html" />
+    <Content Include="Scripts\Spas\StudentSpa\MainController.js" />
+    <Content Include="Scripts\Spas\StudentSpa\RootController.js" />
+    <Content Include="Scripts\Spas\universityService.js" />
     <Content Include="Scripts\studentSPA.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -218,6 +222,8 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\IndexSPA.cshtml" />
     <Content Include="Views\Student\IndexNgSPA.cshtml" />
+    <Content Include="Views\Home\Student.cshtml" />
+    <Content Include="Views\Home\Course.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
