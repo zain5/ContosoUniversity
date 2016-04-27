@@ -1,11 +1,11 @@
 (function() {
-	var MainController = function($scope, $http) {
+	var MainController = function($scope, universityService) {
 		var getCourses = function() {
-			$http.get("/api/CourseWeb").then(onGetCourses, onError);
+			universityService.getCourses().then(onGetCourses, onError);
 		};
 
-		var onGetCourses = function(response) {
-			$scope.courses = response.data;
+		var onGetCourses = function(data) {
+			$scope.courses = data;
 		};
 
 		var onError = function() {
@@ -15,5 +15,5 @@
 		getCourses();
 	};
 
-	angular.module("courseApp").controller("MainController", MainController);
+	angular.module("universityApp").controller("MainController", MainController);
 })();

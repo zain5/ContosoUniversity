@@ -4,19 +4,19 @@
         // Student operations
 
         var getStudents = function() {
-            $http.get("/api/StudentWeb").then((response) => response.data);
+            return $http.get("/api/StudentWeb").then((response) => response.data);
         };
 
         var getStudent = function(studentId) {
-            $http.get("/api/StudentWeb/" + studentId).then((response) => response.data);
+            return $http.get("/api/StudentWeb/" + studentId).then((response) => response.data);
         };
 
         var deleteStudent = function(studentId) {
-            $http.delete("/api/StudentWeb/" + studentId).then((response) => response.data);
+            return $http.delete("/api/StudentWeb/" + studentId).then((response) => response.data);
         };
 
         var updateStudent = function(student) {
-            $http
+            return $http
                 .put("/api/StudentWeb/" + student.StudentID, {
                     StudentID: student.StudentID,
                     FirstName: student.FirstName,
@@ -27,7 +27,7 @@
         };
 
         var createStudent = function(firstName, lastName, enrollDate) {
-            $http
+            return $http
                 .post("/api/StudentWeb", {
                     FirstName: firstName,
                     LastName: lastName,
@@ -40,7 +40,7 @@
         // Enrollment operations
 
         var addEnrollment = function(courseId, studentId) {
-            $http
+            return $http
                 .post("/api/EnrollmentWeb", {
                     CourseID: courseId,
                     StudentID: studentId
@@ -49,7 +49,7 @@
         };
 
         var deleteEnrollment = function(enrollmentId) {
-            $http
+            return $http
                 .delete("/api/EnrollmentWeb/" + enrollmentId)
                 .then((response) => response.data);
         };
@@ -58,22 +58,36 @@
         // Course operations
 
         var getCourses = function() {
-            $http.get("/api/CourseWeb").then((response) => response.data);
+            return $http.get("/api/CourseWeb").then((response) => response.data);
         };
 
         var addCourse = function() {
-
+            return null;
         };
 
         var deleteCourse = function() {
-
+            return null;
         };
 
         var updateCourse = function() {
+            return null;
+        };
 
+        return {
+            getStudents: getStudents,
+            getStudent: getStudent,
+            deleteStudent: deleteStudent,
+            createStudent: createStudent,
+            updateStudent: updateStudent,
+            addEnrollment: addEnrollment,
+            deleteEnrollment: deleteEnrollment,
+            getCourses: getCourses,
+            addCourse: addCourse,
+            deleteCourse: deleteCourse,
+            updateCourse: updateCourse
         };
 
     };
 
-    angular.module("studentApp").factory("universityService", universityService);
+    angular.module("universityApp").factory("universityService", universityService);
 })();

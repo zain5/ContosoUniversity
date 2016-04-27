@@ -1,5 +1,5 @@
 (function() {
-    var CreateController = function($scope, $http, $location, $q) {
+    var CreateController = function($scope, $location, $q, universityService) {
 
         var courseSelection = [];
         var newStudent = null;
@@ -10,54 +10,38 @@
             $scope.enrollDate = moment($scope.enrollDateDisplay, "MM/DD/YYYY").toDate();
             $scope.testMsg = $scope.firstName + $scope.lastName + " will be created successfully on " + $scope.enrollDateDisplay;
 
-            $http
-                .post("/api/StudentWeb", {
-                    FirstName: $scope.firstName,
-                    LastName: $scope.lastName,
-                    EnrollmentDate: $scope.enrollDate
-                })
+            universityService
+                .createStudent($scope.firstName, $scope.lastName, $scope.enrollDate)
                 .then(onStudentCreationSuccess, onError);
         };
 
-        var onStudentCreationSuccess = function(response) {
-            newStudent = response.data;
+        var onStudentCreationSuccess = function(data) {
+            newStudent = data;
 
             if (newStudent) {
                 createEnrollments(newStudent.StudentID);
             }
-            
+
         };
 
         var createEnrollments = function(studentId) {
             courseSelection.forEach(function(courseId) {
-                enrollmentPromises.push($http
-                    .post("/api/EnrollmentWeb", {
-                        CourseID: courseId,
-                        StudentID: studentId
-                    })
-                    .then(onEnrollmentCreationSuccess, onError));
+
+                enrollmentPromises.push(
+                    universityService
+                    .addEnrollment(courseId, studentId)
+                    .then(null, onError)
+                );
             });
 
-            $q.all(enrollmentPromises).then(function() { 
-                $location.path("/main"); 
+            $q.all(enrollmentPromises).then(function() {
+                $location.path("/main");
             });
-        };
-
-        var onEnrollmentCreationSuccess = function(response) {
-
         };
 
         var onError = function(response) {
             $scope.error = "Could not fetch data. Server might be down.";
         };
-
-        var getCourses = function() {
-            $http.get("/api/CourseWeb").then(onGetCourses, onError);
-        }
-
-        var onGetCourses = function(response) {
-            $scope.courses = response.data;
-        }
 
         $scope.updateSelection = function(courseId) {
             var idx = courseSelection.indexOf(courseId);
@@ -72,12 +56,12 @@
             }
         };
 
-        getCourses();
+        universityService.getCourses().then((data) => { $scope.courses = data; }, onError);
         $scope.firstName = "Hello";
         $scope.lastName = "World";
         $scope.enrollDate = new Date();
         $scope.enrollDateDisplay = moment($scope.enrollDate).format('MM/DD/YYYY');
     };
 
-    angular.module("studentApp").controller("CreateController", CreateController);
+    angular.module("universityApp").controller("CreateController", CreateController);
 })();
